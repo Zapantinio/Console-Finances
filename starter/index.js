@@ -86,3 +86,13 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+console.log("Financial Analysis");
+console.log("----------------------------");
+
+
+//calculating number of months
+let numberOfMonths = finances.length;
+console.log("Total Months: " + numberOfMonths);
+
+
