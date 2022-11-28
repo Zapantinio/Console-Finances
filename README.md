@@ -7,7 +7,6 @@ The task is to create code for analysing the financial records of a company. The
 ## Table of Contents 
 
 [Installation](#installation)
-
 [Usage](#usage)
 
 ### Installation
