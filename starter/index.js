@@ -108,4 +108,21 @@ while (i < finances.length) {
 
 console.log("Total: " + total); 
 
+//calculating average change
+let change = 0;
+let sumOfChange = 0;
+
+for (let j=0; j < finances.length-1; j++) {
+    change = finances[j+1][1] - finances[j][1] + sumOfChange;
+    sumOfChange = change;
+}
+
+let avgChange = change/(finances.length-1);
+avgChange = avgChange.toFixed(2);
+
+console.log("Average Change: $" + avgChange);
+
+
+
+
 
