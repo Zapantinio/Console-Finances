@@ -93,7 +93,6 @@ console.log("----------------------------");
 
 //calculating number of months
 let numberOfMonths = finances.length;
-console.log("Total Months: " + numberOfMonths);
 
 //total
 let total = 0;
@@ -106,23 +105,41 @@ while (i < finances.length) {
     i++;
 }
 
-console.log("Total: " + total); 
 
 //calculating average change
 let change = 0;
 let sumOfChange = 0;
+let increase = 0;
+let decrease = 0;
+let gIncrease = 0;
+let gDecrease = 0;
+let increaseMonth;
+let decreaseMonth;
 
 for (let j=0; j < finances.length-1; j++) {
     change = finances[j+1][1] - finances[j][1] + sumOfChange;
     sumOfChange = change;
+    if (finances[j+1][1] > finances[j][1]) {
+        increase = finances[j+1][1] - finances[j][1];
+        if (increase > gIncrease) {
+            gIncrease = increase;
+            increaseMonth = finances[j+1][0];
+            
+        }
+    } else if (finances[j+1][1] < finances[j][1]) {
+        decrease = finances[j+1][1] - finances[j][1];
+        if (decrease < gDecrease) {
+            gDecrease = decrease;
+            decreaseMonth = finances[j+1][0];
+        }
+    }
 }
 
 let avgChange = change/(finances.length-1);
 avgChange = avgChange.toFixed(2);
 
+console.log("Total Months: " + numberOfMonths);
+console.log("Total: $" + total); 
 console.log("Average Change: $" + avgChange);
-
-
-
-
-
+console.log("Greatest Increase in Profits: " + increaseMonth + " ($" + gIncrease + ")");
+console.log("Greatest Decrease in Profits: " + decreaseMonth + " ($" + gDecrease + ")");
