@@ -95,4 +95,17 @@ console.log("----------------------------");
 let numberOfMonths = finances.length;
 console.log("Total Months: " + numberOfMonths);
 
+//total
+let total = 0;
+let sum = 0;
+let i = 0;
+
+while (i < finances.length) {
+    total = finances[i][1] + sum;
+    sum = total;
+    i++;
+}
+
+console.log("Total: " + total); 
+
 
