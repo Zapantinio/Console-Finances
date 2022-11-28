@@ -87,28 +87,44 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
-console.log("Financial Analysis");
-console.log("----------------------------");
 
+/* Calculating the number of months in the array given */
 
-//calculating number of months
 let numberOfMonths = finances.length;
 
-//total
+/* Calculating the Net Total Amount of Profit/Losses over the entire period */
+
+//Declaring variables used to find the total. "total" meaning the net total
+//"sum" is used to store the addition of the numbers from the previous iterations of the loop
+//"i" is used for running the while loop
 let total = 0;
 let sum = 0;
 let i = 0;
 
+//while loop to calculate the Net Total Amount of Profit/Losses over the entire period
 while (i < finances.length) {
     total = finances[i][1] + sum;
     sum = total;
     i++;
 }
 
+/* Calculating the average of the changes in Profit/Losses over the entire period
+   Calculating the greatest INCREASE in profits (date and amount) over the entire period
+   Calculating the greatest DECREASE in profits (date and amount) over the entire period */
 
-//calculating average change
+//Declaring variables used to find the average changes
+//"change" is used to store the addition of the changes from the previous iterations of the loop
+//"sumOfChange" is used to store the whole addition of changes
 let change = 0;
 let sumOfChange = 0;
+
+//Declaring variables used to find the greatest increase/decrease and the date of them 
+//"increase" is used to store every increase found while going through the array
+//"decrease" is used to store every decrease found while going through the array
+//"gIncrease" is the greatest increase and ends up being the biggest one
+//"gDecrease" is the greatest decrease and ends up being the biggest one
+//"increaseMonth" is the month of the greatest increase
+//"decreaseMonth" is the month of the greatest decrease
 let increase = 0;
 let decrease = 0;
 let gIncrease = 0;
@@ -116,18 +132,26 @@ let gDecrease = 0;
 let increaseMonth;
 let decreaseMonth;
 
+//for loop to calculate the Average of Changes in Profit/Losses over the entire Period.
+//also used to calculate the greatest INCREASE in profits (date and amount) over the entire period
+//also used to calculate the greatest DECREASE in profits (date) and amount) over the entire period
 for (let j=0; j < finances.length-1; j++) {
+    //summing up all the changes
     change = finances[j+1][1] - finances[j][1] + sumOfChange;
     sumOfChange = change;
+    //if statement that checks to see if there is an increase and if there is it stores it to "increase"
     if (finances[j+1][1] > finances[j][1]) {
         increase = finances[j+1][1] - finances[j][1];
+        //if statement that checks if the increase calculated above is higher than the greatest increase and if so replaces it and notes the month of it
         if (increase > gIncrease) {
             gIncrease = increase;
             increaseMonth = finances[j+1][0];
             
         }
+    //if statement that checks to see if there is an decrease and if there is it stores it to "decrease"
     } else if (finances[j+1][1] < finances[j][1]) {
         decrease = finances[j+1][1] - finances[j][1];
+        //if statement that checks if the decrease calculated above is higher than the greatest decrease and if so replaces it and notes the month of it
         if (decrease < gDecrease) {
             gDecrease = decrease;
             decreaseMonth = finances[j+1][0];
@@ -135,9 +159,15 @@ for (let j=0; j < finances.length-1; j++) {
     }
 }
 
+//Calculating the Average of the changes by using the value of ALL changes divided by the array's length minus 1, since changes are 1 less than the elements
 let avgChange = change/(finances.length-1);
+//Allowing only 2 decimals to the number calculated
 avgChange = avgChange.toFixed(2);
 
+
+/* Printing everything to the Console */
+console.log("Financial Analysis");
+console.log("----------------------------");
 console.log("Total Months: " + numberOfMonths);
 console.log("Total: $" + total); 
 console.log("Average Change: $" + avgChange);
